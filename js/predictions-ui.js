@@ -93,12 +93,6 @@ const PredictionsUI = {
                 <div class="prediction-content">
                     <p class="prediction-text">${prediction.text}</p>
                     ${prediction.notes ? `<p class="prediction-notes">${prediction.notes}</p>` : ''}
-                    <div class="prediction-meta">
-                        <span class="prediction-date">
-                            ${new Date(prediction.timestamp).toLocaleDateString()}
-                        </span>
-                        <span class="prediction-id">ID: ${prediction.id}</span>
-                    </div>
                 </div>
             `;
             
