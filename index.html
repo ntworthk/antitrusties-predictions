@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoustonKemp antitrusties 2025 - Submit Prediction</title>
+    
+    <!-- External Dependencies -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Application Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>HoustonKemp antitrusties 2025</h1>
+            <p class="header-description">Submit a new prediction for competition economics in 2025</p>
+        </header>
+
+        <section class="section" id="submission-section">
+            <div class="section-header">
+                <h2>Submit Prediction</h2>
+            </div>
+            <div class="submission-form">
+                <div class="form-group">
+                    <textarea 
+                        id="prediction-text" 
+                        placeholder="Enter your prediction here..."
+                        rows="4"
+                        class="prediction-input"
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <button id="submit-button" class="submit-button">
+                        Submit Prediction
+                    </button>
+                </div>
+                <div id="status-message" class="status-message hidden"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Application Scripts -->
+    <script src="js/submission-state.js"></script>
+    <script src="js/submission-ui.js"></script>
+    <script>
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            SubmissionUI.initialize();
+        });
+    </script>
+</body>
+</html>
