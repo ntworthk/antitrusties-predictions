@@ -35,6 +35,8 @@ const PredictionsState = {
             
             if (data.status === 'success') {
                 this.predictions = data.predictions;
+            } else if (data.message === 'No predictions table exists') {
+                this.predictions = [];
             } else {
                 throw new Error(data.message || 'Failed to load predictions');
             }
@@ -46,3 +48,4 @@ const PredictionsState = {
         }
     }
 };
+
