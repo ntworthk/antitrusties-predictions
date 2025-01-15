@@ -85,9 +85,12 @@ const PredictionsUI = {
             const statusIcon = prediction.status === 'correct' ? 'fa-check-circle text-success' :
                              prediction.status === 'incorrect' ? 'fa-times-circle text-danger' :
                              'fa-question-circle text-warning';
+            const statusText = prediction.status === 'correct' ? 'Correct prediction' :
+            prediction.status === 'incorrect' ? 'Incorrect prediction' :
+            'Pending prediction';
             
             predictionCard.innerHTML = `
-                <div class="status-indicator">
+                <div class="status-indicator" title="${statusText}">
                     <i class="fas ${statusIcon}"></i>
                 </div>
                 <div class="prediction-content">
