@@ -238,6 +238,25 @@ body {
     color: var(--secondary);
 }
 
+.submission-controls {
+    background: var(--surface);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px var(--shadow);
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.submission-controls.scrolled {
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    border-radius: 0;
+    box-shadow: 0 2px 6px var(--shadow);
+    padding: 0 2rem;
+}
+
 /* Status Colors */
 .text-success { color: var(--success); }
 .text-danger { color: var(--error); }
@@ -256,5 +275,10 @@ body {
 
     .header h1 {
         font-size: 1.75rem;
+    }
+    .submission-controls.scrolled {
+        width: calc(100% + 2rem);
+        margin-left: -1rem;
+        padding: 0 1rem;
     }
 }

@@ -1,12 +1,11 @@
-// predictions-ui.js
 const PredictionsUI = {
     initialize() {
-        // Form elements
         this.predictionInput = document.getElementById('prediction-text');
         this.submitButton = document.getElementById('submit-button');
         this.statusMessage = document.getElementById('status-message');
         this.refreshButton = document.getElementById('refresh-button');
         this.predictionsGrid = document.querySelector('.predictions-grid');
+        this.submissionControls = document.querySelector('.submission-controls');
         
         this.setupEventListeners();
         this.loadPredictions();
@@ -15,7 +14,6 @@ const PredictionsUI = {
     setupEventListeners() {
         this.submitButton.addEventListener('click', () => this.handleSubmission());
 
-        // Allow submission with Ctrl+Enter or Cmd+Enter
         this.predictionInput.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
                 this.handleSubmission();
@@ -23,6 +21,15 @@ const PredictionsUI = {
         });
 
         this.refreshButton.addEventListener('click', () => this.loadPredictions());
+        
+        // Add scroll event listener for sticky header
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                this.submissionControls.classList.add('scrolled');
+            } else {
+                this.submissionControls.classList.remove('scrolled');
+            }
+        });
     },
 
     async handleSubmission() {
@@ -41,8 +48,8 @@ const PredictionsUI = {
             
             if (result.status === 'success') {
                 this.showStatus('Prediction submitted successfully!', 'success');
-                this.predictionInput.value = ''; // Clear input on success
-                await this.loadPredictions(); // Refresh the predictions display
+                this.predictionInput.value = '';
+                await this.loadPredictions();
             } else {
                 this.showStatus(result.message || 'Failed to submit prediction', 'error');
             }
@@ -86,8 +93,8 @@ const PredictionsUI = {
                              prediction.status === 'incorrect' ? 'fa-times-circle text-danger' :
                              'fa-question-circle text-warning';
             const statusText = prediction.status === 'correct' ? 'Correct prediction' :
-            prediction.status === 'incorrect' ? 'Incorrect prediction' :
-            'Pending prediction';
+                             prediction.status === 'incorrect' ? 'Incorrect prediction' :
+                             'Pending prediction';
             
             predictionCard.innerHTML = `
                 <div class="status-indicator" title="${statusText}">
@@ -107,7 +114,6 @@ const PredictionsUI = {
         this.statusMessage.textContent = message;
         this.statusMessage.className = `status-message ${type}`;
         
-        // Hide the message after 5 seconds if it's a success message
         if (type === 'success') {
             setTimeout(() => {
                 this.statusMessage.className = 'status-message hidden';

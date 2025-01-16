@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HoustonKemp antitrusties 2025 - Predictions</title>
-    
-    <!-- External Dependencies -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Application Styles -->
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
@@ -18,9 +14,9 @@
             <p class="header-description">Submit and view predictions for competition economics in 2025</p>
         </header>
 
-        <section class="section" id="submission-section">
+        <div class="submission-controls">
             <div class="section-header">
-                <h2>Submit Prediction</h2>
+                <h2>Submit prediction</h2>
             </div>
             <div class="submission-form">
                 <div class="form-group">
@@ -38,11 +34,11 @@
                 </div>
                 <div id="status-message" class="status-message hidden"></div>
             </div>
-        </section>
+        </div>
 
         <section class="section" id="predictions-section">
             <div class="section-header">
-                <h2>Current Predictions</h2>
+                <h2>Current predictions</h2>
                 <button id="refresh-button" class="refresh-button">
                     <i class="fas fa-sync-alt"></i> Refresh
                 </button>
@@ -53,11 +49,9 @@
         </section>
     </div>
 
-    <!-- Application Scripts -->
     <script src="js/predictions-state.js"></script>
     <script src="js/predictions-ui.js"></script>
     <script>
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             PredictionsUI.initialize();
         });
